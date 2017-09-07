@@ -1,0 +1,13 @@
+Group: Troy McMillan, Michael Curtis, Destoni Baldwin, Jordan Leibman, Zachary Lowery
+
+
+Ideas:
+
+&nbsp;Text-based minesweep game(with embellishments)
+
+word processor(grammar and formatting abilities)
+
+Generic 2-D whack-a-mole shooter game
+
+
+
