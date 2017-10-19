@@ -1,7 +1,9 @@
-﻿//Text.cs
-//Controls the Text features of the Won Word Processor
-//Last Updated by Jordan Leibman
-//Last Updated on 10/9/2017
+﻿/* TextModel.cs
+ * Written by Jordan Leibman
+ * Written on 10/19/2017
+ * Purpose: Controls the formatting of individual text characters for bold, italics, and underline
+ * TODO: unit and integration testing with PageModel.cs
+ * Implications: Text is stored in a list on PageModel.cs and used occasionally for saving through the DocumentModel.cs
 using System.ComponentModel;
 
 namespace Won.Model {
@@ -12,6 +14,10 @@ namespace Won.Model {
       private bool italics;
       private bool underline;
       
+      /*Ch
+       * The character stored in the Text object
+       * Returns a non formatted character
+       */
       public char Ch {
          get { return ch; }
          set {
@@ -21,6 +27,10 @@ namespace Won.Model {
          }
       }
 
+      /*Bold
+       * The flag if Text is bold
+       * returns if text is bolded
+       */
       public bool Bold {
          get { return bold; }
          set {
@@ -30,6 +40,10 @@ namespace Won.Model {
          }
       }
 
+      /*Italics
+       * The flag if Text is italics
+       * returns if text is italicized
+       */
       public bool Italics {
          get { return italics; }
          set {
@@ -39,6 +53,10 @@ namespace Won.Model {
          }
       }
 
+      /*Underline
+       * The flag if Text is underline
+       * returns if text is underlined
+       */
       public bool Underline {
          get { return underline; }
          set {
@@ -48,6 +66,16 @@ namespace Won.Model {
          }
       }
 
+      /* ToString
+       * Written by Jordan Leibman
+       * returns the Text object as a string with the following format
+       * Ch|Bold|Italics|Underline
+       * Used as a standard format for the saving and loading of files
+       */
+      public string ToString() {
+         return ch.ToString() + "|" + bold.ToString() + "|" + itlaics.ToString() + "|" + underline.ToString();
+      }
+      //Event and property handlers
       public event PropertyChangedEventHandler PropertyChanged;
 
       private void RaisePropertyChanged(string property) {
