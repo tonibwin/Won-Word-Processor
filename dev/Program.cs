@@ -11,7 +11,7 @@ namespace WonApplication
         static void Main(string[] args)
         {
 
-            //Test test: Written by Jordan Leibman
+            //Text test: Written by Jordan Leibman
             Console.WriteLine("Starting Test");
             Text t1 = new Text('a');
             Console.WriteLine(t1.ToString());
