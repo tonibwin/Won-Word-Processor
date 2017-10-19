@@ -16,6 +16,15 @@ namespace WonApplication {
         //Default Constructor
         public Page() {}
 
+        //A constructor that creates a page object giving it the data
+        //for a page number and the text that belongs on the page.
+        //Pre-Condition: Input of pos variable and text variable.
+        //Post-Condition: Creates a page object
+        private Page(int pos, List<Text> text) {
+            this.pos = pos;
+            this.text = text;
+        }
+
         //Pre-Condition: Input of variable pos. Pos is a given page number.
         //Post-Condition: Sets the pos variable. 
         public void addPage(int pos) { this.pos = pos;}
@@ -25,8 +34,7 @@ namespace WonApplication {
         //Post-Condition: Makes object null
         //public Page deletePage() { return null; }
 
-        static void Main(string[] args)
-        {
+        private void TestMethod() {
             //Test Example 1 for Text
             Console.WriteLine("Starting Test");
             Text t1 = new Text('a');
@@ -45,7 +53,7 @@ namespace WonApplication {
 
             /*---------------------------------------*/
 
-            
+
             Console.WriteLine("Starting Page Test ");
 
             //Test Example 1 for Page
@@ -56,7 +64,8 @@ namespace WonApplication {
             p1.text.Add(t2);
             Console.WriteLine($"    p1 page number: {p1.pos}");
             Console.Write("    p1 text: ");
-            for (int i = 0; i < p1.text.Count; i++) {
+            for (int i = 0; i < p1.text.Count; i++)
+            {
                 Console.Write(p1.text[i].getText());
             }
             Console.WriteLine("\n\nEnd of Page Example 1 \n");
@@ -65,10 +74,11 @@ namespace WonApplication {
             Console.WriteLine("Example 2 for Page\n");
             Page p2 = new Page();
             p2.addPage(2);
-            Text t3= new Text('a');
+            Text t3 = new Text('a');
             string textentry = "Hello, this is Won Word Processor!";
 
-            for (int i = 0; i < textentry.Length; i++) {
+            for (int i = 0; i < textentry.Length; i++)
+            {
                 char convertedText = textentry[i];
                 t3.setText(convertedText);
                 t3.setBold(true);
@@ -81,14 +91,24 @@ namespace WonApplication {
             Console.WriteLine("\n     Page 2 Text Entry");
             Console.WriteLine($"     Page Number: {p2.pos}");
             Console.Write("     Fonts of Text Entry: ");
-            for (int j = 0; j < p2.text.Count; j++) {
-                if (j == 0){
+            for (int j = 0; j < p2.text.Count; j++)
+            {
+                if (j == 0)
+                {
                     Console.WriteLine($"Bold: {p2.text[j].getBold()}; Italics: {p2.text[j].getItalics()}; Underline: {p2.text[j].getUnderline()}");
                     Console.Write("     ");
                 }
-                Console.Write(p2.text[j].getText());
+                //Console.Write(p2.text[j].getText());
             }
-            //Console.WriteLine("\n\nEnd of Page Example 2 \n");
+            Console.WriteLine("\n\nEnd of Page Example 2 \n");
+
+        }
+        
+        static void Main(string[] args)
+        {
+            Page test = new Page();
+            test.TestMethod();
+
         }
     }
 }
