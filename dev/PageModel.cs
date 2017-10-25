@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Collections;
+using System.IO;
+
 namespace Won.Model {
 
     public class PageModel { }
@@ -52,9 +54,7 @@ namespace Won.Model {
         //input is added into the ObservableCollection 'text'.
         public void inputText(char input){
             Cursor++;
-            text.Insert(Cursor, input);
-            //Error: Unclear why I can't use Insert() or Add() for 
-            //the Observable Collection
+            text.Insert(Cursor, new Text { Ch = input, Bold = false, Italics = false, Underline = false});
         }
 
         //Removes text from ObservableCollection
@@ -72,8 +72,33 @@ namespace Won.Model {
         //Post-Conditions: If true should pass the ObservableCollection<Text> 
         //to the document class. If false should take in txt file from 
         //document class and place into ObservableCollection<Text>
-        public void PassText(bool type){
-
+        public void PassText(bool type, string fileName){
+            /*string conversionDoc = "";
+            if (type == true){
+                //need to retrieve updated Document class to test.
+                //Document createdoc = new Document("name", text);
+                //Convert ObservableCollection to string then send it to document clas.
+                for (int i = 0; i <= text.Count(); i++) {
+                    conversionDoc = text[i].ToString(); 
+                }
+                //Call Document class to send text
+                //Document newFile = new Document("fileName", conversionDoc);
+            }
+            else {
+                //NOTE: when saving to a text file, it is not going to save the properties
+                //of each character (bold, italics, underline).
+                try{   
+                    // Open the text file using a stream reader.
+                    using (StreamReader readInTextFile = new StreamReader(fileName)){
+                        String line = readInTextFile.ReadToEnd();
+                    }
+                }
+                catch (Exception e){
+                    Console.WriteLine("File not Found:");
+                    Console.WriteLine(e.Message);
+                }
+            }
+            */
         }
 
         //Cursor Position Getter and Setter
