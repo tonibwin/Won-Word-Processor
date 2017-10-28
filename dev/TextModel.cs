@@ -4,6 +4,7 @@
  * Purpose: Controls the formatting of individual text characters for bold, italics, and underline
  * TODO: unit and integration testing with PageModel.cs
  * Implications: Text is stored in a list on PageModel.cs and used occasionally for saving through the DocumentModel.cs
+ */
 using System.ComponentModel;
 
 namespace Won.Model {
