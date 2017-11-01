@@ -1,0 +1,6 @@
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\obj\x86\Debug\WonDemo1.csprojResolveAssemblyReference.cache
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\obj\x86\Debug\WonDemo1.csproj.CoreCompileInputs.cache
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\bin\Debug\ConsoleApplication.exe
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\bin\Debug\ConsoleApplication.pdb
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\obj\x86\Debug\ConsoleApplication.exe
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\obj\x86\Debug\ConsoleApplication.pdb
