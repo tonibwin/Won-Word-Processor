@@ -1,0 +1,27 @@
+SO I found that the UI Control RichTextBox is actually really powerful, and allows us to remove some classes from our design as the UI element can handle text input, bold, italics, underlines, fonts, pages, and so on. After discussing the option with Michael and Zachary I think we should also scrap the MVVM approach for now since its a bit cumbersome to include in our project currently. I want to focus the team on getting something fully functional. I have a tutorial that has an approach that may work but it was done in a previous version of Visual Studio so we will need to do some adaptation. That tutorial is available here http://www.wpf-tutorial.com/rich-text-controls/how-to-creating-a-rich-text-editor/
+
+This should get us some core features ready for Demo2 so we have something to show, afterwards we can focus on other features such as highlighting and text color, export to pdf, and find. Most of these should be supported by the RichTextBox, we just need to make them accessible through a button or some other user controlled command.
+
+I'll upload a template that will be our working classes for the moment (should be a MainWindow.xaml for GUI and Editor.cs for the c# logic)
+
+Won Goals with RichTextBox
+##Model and ViewModel##
+-generate button commands for Save/Load, Bold/Italics/Underline, Font Style/Font Size
+--Can use ApplicationCommands Class for some actions like save/load
+--The ApplicationCommands are properties, the actual functionality needs to be programmed
+
+
+##View##
+-set button images and UI elements
+--Save/Load features are Buttons
+--Bold/Italics/Underline are ToggleButtons
+--Fonts and Font Size are ComboBox
+-bind commands to appropriate buttons
+
+
+##Future Goals##
+-implement text color and highlighting
+-implement export to PDF
+-implement print
+-implment columns and tables
+implement find

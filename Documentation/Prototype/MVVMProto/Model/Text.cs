@@ -4,7 +4,7 @@
 //Last Updated on 10/9/2017
 using System;
 namespace WonApplication{
-   class Text{
+   public class Text{
       //Instance Variables
       private char c; //Text character
       private bool bold; //Text Bold Setting (True = on, False = off)
@@ -92,11 +92,11 @@ namespace WonApplication{
       //"c b i u"
       //where c is the character in c, and b i u are the boolean values as "true" or "false" repectively
       public override String ToString(){
-         return c.ToString() + " " + bold.ToString() + " " + italics.ToString() + " " + underline.ToString();
+         return c.ToString() + "\t" + bold.ToString() + "\t" + italics.ToString() + "\t" + underline.ToString() + "\n";
       }
       //End Accessors
 
-      //testing method
+      /*testing method
       static void Main(string [] args) {
          Console.WriteLine("Starting Test");
          Text t1 = new Text('a');
@@ -112,6 +112,8 @@ namespace WonApplication{
          Console.WriteLine(t2.getItalics());
          Console.WriteLine(t2.getUnderline());
          Console.WriteLine("Terminating Test");
+         
       }
+      end testing method*/
    }
 }

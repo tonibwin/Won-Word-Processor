@@ -3,15 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+/*The intended purpose of the Page class is to contain a list of text
+  based on the Text.cs class.*/
+namespace WonApplication {
 
-namespace WonApplication
-{
-    class Program
+    public class Page
     {
+        //Instance Variables   
+        private int pos{ get; set; }/* Page number (Position) */
+        private List<Text> text = new List<Text>();/* A list based on Text.cs class */
+
+        //Default Constructor
+        public Page() {}
+
+        //Pre-Condition: Input of variable pos. Pos is a given page number.
+        //Post-Condition: Sets the pos variable. 
+        public void addPage(int pos) { this.pos = pos;}
+
+        //Deletes a Page object.
+        //Pre-Condition: none
+        //Post-Condition: Makes object null
+        //public Page deletePage() { return null; }
+
+        public string PassText() {
+           string pass = "";
+           foreach (Text add in text) pass = pass + add.ToString();
+           return pass;
+        }
+
+
         static void Main(string[] args)
         {
-
-            //Test test: Written by Jordan Leibman
+            //Test Example 1 for Text
             Console.WriteLine("Starting Test");
             Text t1 = new Text('a');
             Console.WriteLine(t1.ToString());
@@ -25,12 +48,11 @@ namespace WonApplication
             Console.WriteLine(t2.getBold());
             Console.WriteLine(t2.getItalics());
             Console.WriteLine(t2.getUnderline());
-            Console.WriteLine("Terminating Test");
-
+            Console.WriteLine("Terminating Test \n");
 
             /*---------------------------------------*/
 
-            //Test for page, presumably written by Destoni Baldwin
+            
             Console.WriteLine("Starting Page Test ");
 
             //Test Example 1 for Page
@@ -74,8 +96,6 @@ namespace WonApplication
                 Console.Write(p2.text[j].getText());
             }
             //Console.WriteLine("\n\nEnd of Page Example 2 \n");
-
-            Console.ReadKey();
         }
     }
 }
