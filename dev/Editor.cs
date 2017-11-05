@@ -50,8 +50,7 @@ namespace Won.Editor{
          * an event. Parameters are event handlers.
          * Post-Conditions: Updates the FontFamily and Font size of selected text.
          */
-        private void UpdateFontSizeAndFamily(object sender, RoutedEventArgs e)
-        {
+        private void UpdateFontSizeAndFamily(object sender, RoutedEventArgs e){
             //Font Family
             object temp = rtbEditor.Selection.GetPropertyValue(Inline.FontFamilyProperty);
             cmbFontFamily.SelectedItem = temp;
@@ -67,8 +66,7 @@ namespace Won.Editor{
          * of Font Family.
          * Post-Conditions: Updates Font Family selection in toolbar.
          */
-        private void selectFontFamily(object sender, SelectionChangedEventArgs e)
-        {
+        private void selectFontFamily(object sender, SelectionChangedEventArgs e){
             if (cmbFontFamily.SelectedItem != null)
                 rtbEditor.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, cmbFontFamily.SelectedItem);
         }
@@ -79,8 +77,7 @@ namespace Won.Editor{
          * of Font size.
          * Post-Conditions: Updates Font size selection in toolbar.
          */
-        private void selectFontSize(object sender, TextChangedEventArgs e)
-        {
+        private void selectFontSize(object sender, TextChangedEventArgs e){
             rtbEditor.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.Text);
         }
     }
