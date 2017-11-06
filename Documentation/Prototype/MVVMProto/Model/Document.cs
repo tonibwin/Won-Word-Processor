@@ -32,7 +32,7 @@ namespace WonApplication {
          *   Running-Time: O(n * Running-Time of PassText (Page method)) where n is the number of pages.
          *   
          */
-        public override String ToString()
+      public override string ToString()
       {
          string stringBuffer = "";
          for (int pageNumber = FIRST_PAGE; pageNumber < pages.Count; pageNumber++)
@@ -170,9 +170,12 @@ namespace WonApplication {
 
                 for (int pageNumber = FIRST_PAGE; (stringOffset = fileContainer.IndexOf(PAGE_DELIMETER, pageIndexStart)) != STRING_NOT_FOUND; pageNumber++){
                     temporaryContainer.Add(new Page());
-                    temporaryContainer[pageNumber].appendTextList(fileContainer.Substring(pageIndexStart, stringOffset));
-                    pageIndexStart += stringOffset + PAGE_DELIMETER.Length;
-               }    
+                    temporaryContainer[pageNumber].appendTextList(fileContainer.Substring(pageIndexStart, stringOffset - pageIndexStart));
+
+                    pageIndexStart = stringOffset + PAGE_DELIMETER.Length;
+
+                    if(fileContainer.Length < pageIndexStart) temporaryContainer[pageNumber].appendTextList(fileContainer.Substring(stringOffset));
+                }    
             }
 
             //One page in a file.
