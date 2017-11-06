@@ -16,6 +16,8 @@ namespace WonApplication {
         //Default Constructor
         public Page() {}
 
+        //Librarian: To whom it may concern, please consider renaming this function to setPagePos, or setPos, as that is the convention.
+        //           it is also concerning because adding and removing pages is the Document class's job, and is confusing in that context.
         //Pre-Condition: Input of variable pos. Pos is a given page number.
         //Post-Condition: Sets the pos variable. 
         public void addPage(int pos) { this.pos = pos;}
@@ -31,7 +33,36 @@ namespace WonApplication {
            return pass;
         }
 
+        /* Author: Zachary Lowery
+         * Date: 11/6/2017
+         * Description: This function takes a string and converts it into a List<Text>, and then
+         *              assigns it to the page. It should be noted this function does NOT overwrite 
+         *              the List, but rather appends to it.
+         *              
+         * Pre-Condition: Don't try passing off a null pointer or something stupid like that.
+         * Post-Condition: Takes a string and converts it to a text list, which is added to the contents
+         *                 of the page.
+         *                 
+         * Implications: Please remember that this is NOT a SET function. . . 
+         *               On loading very large files, creating a constructor and inserting manually into a Text<List> may get to be a terribly long business.
+         *               We may need to consider only loading small portions of the document at a time, based on where in the UI they are looking. Just something
+         *               to keep in mind.
+         *               
+         * Running-Time: O(n * Running-Time[Text Constructor(char)] * Running-Time[<Page>.Add()]), where n is the number of characters in the string.
+         * Comments: I am not proud that so many Text constructors are called (one for each character)
+         *           but I don't think I can get around that given how we have structured things.
+         *  
+         * 
+        */
+        public void appendTextList(string stringText){
+            
+            for(int stringPos = 0; stringPos < stringText.Length; stringPos++){
+                Text newText = new Text(stringText[stringPos]);
+                this.text.Add(newText); 
+            }
+        }
 
+        /*
         static void Main(string[] args)
         {
             //Test Example 1 for Text
@@ -52,7 +83,7 @@ namespace WonApplication {
 
             /*---------------------------------------*/
 
-            
+            /*
             Console.WriteLine("Starting Page Test ");
 
             //Test Example 1 for Page
@@ -96,6 +127,6 @@ namespace WonApplication {
                 Console.Write(p2.text[j].getText());
             }
             //Console.WriteLine("\n\nEnd of Page Example 2 \n");
-        }
+        } */
     }
 }
