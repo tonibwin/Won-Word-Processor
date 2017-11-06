@@ -1,12 +1,15 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
+using System.Diagnostics;
+
 /// <summary>
 /// Summary description for Class1
 /// </summary>
 namespace WonApplication {
     public class testDoc
     {
-        public const string TEST_PATH = "D:\\Users\\Zach\\Desktop\\Course_Syllabus\\Fall 2017\\CS371_Cao\\GroupWon\\Documentation\\Prototype\\MVVMProto\\Model\testTextDocs\\test1";
+        public const string TEST_PATH = @"D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\Documentation\Prototype\MVVMProto\Model\testTextDocs\test1";
         public testDoc(int testCase)
         {
             switch (testCase)
@@ -27,13 +30,13 @@ namespace WonApplication {
                     pageHierarchy.Add(page3);
 
                     testDocument.setPageList(pageHierarchy);
-                    //testDocument.Save(TEST_PATH);
+                    testDocument.SaveAs(TEST_PATH);
 
-                    testDocument.toString();
+                    testDocument.ToString();
 
-                    testDocument.Load(TEST_PATH + "test1.txt");
+                    testDocument.Load(TEST_PATH + ".txt");
 
-                    testDocument.toString();
+                    Debug.WriteLine(testDocument.ToString());
                     break;
 
             }
@@ -42,7 +45,7 @@ namespace WonApplication {
 
         static void Main(string[] args)
         {
-            testDoc firstTest = new testDoc(1);
+            testDoc firstTest = new testDoc(0);
             return;
         }
     }
