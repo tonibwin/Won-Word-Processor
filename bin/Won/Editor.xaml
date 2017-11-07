@@ -1,0 +1,42 @@
+﻿<Window x:Class="Won.Editor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Won"
+        mc:Ignorable="d"
+        Title="Won Word Processor" Height="350" Width="525">
+    <!--Button images used from Microsoft Visual Studio 2013 Image Library (C) Microsoft images used in this software are for education purposes only-->
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed"/>
+    </Window.CommandBindings>
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Command="ApplicationCommands.Open">
+                <Image Source="/Won;component/Images/Open_6529.png" Width="16" Height="16"/>
+            </Button>
+            <Button Command="ApplicationCommands.Save">
+                <Image Source="/Won;component/Images/Save_6530.png" Width="16" Height="16"/>
+            </Button>
+            <Separator />
+            <ToggleButton Command="EditingCommands.ToggleBold" Name="btnBold">
+                <Image Source="/Won;component/Images/Bold_11689.png" Width="16" Height="16"/>
+            </ToggleButton>
+            <ToggleButton Command="EditingCommands.ToggleItalic" Name="btnItalic">
+                <Image Source="/Won;component/Images/Italic_11693.png" Width="16" Height="16"/>
+            </ToggleButton>
+            <ToggleButton Command="EditingCommands.ToggleUnderline" Name="btnUnderline">
+                <Image Source="/Won;component/Images/Underline_11700.png" Width="16" Height="16"/>
+            </ToggleButton>
+            <Separator />
+            <ComboBox Name="cmbFontFamily" Width="150" SelectionChanged="selectFontFamily">
+
+            </ComboBox>
+            <ComboBox Name="cmbFontSize" Width="50" IsEditable="True" TextBoxBase.TextChanged="selectFontSize">
+
+            </ComboBox>
+        </ToolBar>
+        <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged"/>
+    </DockPanel>
+</Window>
