@@ -37,6 +37,6 @@
 
             </ComboBox>
         </ToolBar>
-        <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged"/>
+        <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged" AcceptsTab="True" Width="525" BorderBrush="White" Padding="25"/>
     </DockPanel>
 </Window>

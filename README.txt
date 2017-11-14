@@ -1,10 +1,10 @@
-README ( Last Updated  11/6/17  v1.6  Demo2 )
-Current Deployment is currently only present in a Windows environment.
+README ( Last Updated  11/14/17  v1.6  Demo2 )
+Current Deployment is currently only possible in a Windows environment.
 Loading the visual studio solution Won.sln located in */GroupWon/bin/Won.sln will load the file in Visual Studio
-After loading press the start button at the top of the page or press f5 to start building.
+After loading press the start button at the top of the page (or press f5 by default visual studio settings) to start building. Once the solution is built Visual Studio should start the program automatically
 
 Jordan Note: I am currently looking into making the program functional on a linux environment as a backup.
-I have seen some solutions that may work using emulation software but I will update the readme accordingly when I find a solution
+I have seen some solutions that may work using emulation software but I will update the readme accordingly when I find a solution (Update 11/14/17): I have determined that our program would not be compatible with a linux environment as our program uses a library called Microsoft.Win32 which uses windows OS features within our program for features like save, load, and print.
 
 Won Word Processor
 Current Features
