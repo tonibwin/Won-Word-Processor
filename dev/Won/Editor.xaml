@@ -25,6 +25,7 @@
                 <Image Source="/Won;component/Images/Print.png" Width="16" Height="16"/>
             </Button>
             <Separator/>
+            <!--
             <Button Command="ApplicationCommands.Find" ToolTip="Find">
                 <Image Source="/Won;component/Images/Find.png" Width="16" Height="16"/>
             </Button>
@@ -44,6 +45,7 @@
                 <Image Source="/Won;component/Images/Redo.png" Width="16" Height="16"/>
             </Button>
             <Separator/>
+                -->
             <ToggleButton Command="EditingCommands.ToggleBold" Name="btnBold" ToolTip="Bold">
                 <Image Source="/Won;component/Images/Bold.png" Width="16" Height="16"/>
             </ToggleButton>

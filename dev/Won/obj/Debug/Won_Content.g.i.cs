@@ -8,10 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/bold_11689.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/italic_11693.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/open_6529.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/save_6530.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/underline_11700.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/bold.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/copy.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/cut.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/find.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/italic.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/open.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/paste.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/print.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/redo.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/save.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/underline.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/undo.png")]
 
 
