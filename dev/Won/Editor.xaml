@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Won"
         mc:Ignorable="d"
-        Title="Won Word Processor" Height="350" Width="525">
+        Title="Won Word Processor" Height="550" Width="9.5in">
     <!--Button images used from Microsoft Visual Studio 2013 Image Library (C) Microsoft, images used in this software are for education purposes only-->
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed"/>
@@ -19,6 +19,12 @@
             <Button Command="ApplicationCommands.Save">
                 <Image Source="/Won;component/Images/Save_6530.png" Width="16" Height="16"/>
             </Button>
+            <Button>
+                <Image Source="/Won;component/Images/Print_11009.png" Width="16" Height="16"/>
+            </Button>
+            <Button>
+                <Image Source="/Won;component/Images/Find_5650.png" Width="16" Height="16"/>
+            </Button>
             <Separator />
             <ToggleButton Command="EditingCommands.ToggleBold" Name="btnBold">
                 <Image Source="/Won;component/Images/Bold_11689.png" Width="16" Height="16"/>
@@ -30,13 +36,16 @@
                 <Image Source="/Won;component/Images/Underline_11700.png" Width="16" Height="16"/>
             </ToggleButton>
             <Separator />
-            <ComboBox Name="cmbFontFamily" Width="150" SelectionChanged="selectFontFamily">
-
-            </ComboBox>
-            <ComboBox Name="cmbFontSize" Width="50" IsEditable="True" TextBoxBase.TextChanged="selectFontSize">
-
-            </ComboBox>
+            <ComboBox Name="cmbFontFamily" Width="150" SelectionChanged="selectFontFamily"/>
+            <ComboBox Name="cmbFontSize" Width="50" IsEditable="True" TextBoxBase.TextChanged="selectFontSize"/>
+            <Separator/>
+            <ComboBox Name="cmbHighlight" Width="50"/>
+            <ComboBox Name="cmbTextColor" Width="50"/>
         </ToolBar>
-        <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged" AcceptsTab="True" Width="525" BorderBrush="White" Padding="25"/>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <Grid Background="Gray">
+                <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged" AcceptsTab="True" Width="8.5in" BorderBrush="White" Padding=".5in"/>
+            </Grid>
+        </ScrollViewer>
     </DockPanel>
 </Window>
