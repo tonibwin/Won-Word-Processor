@@ -76,7 +76,7 @@ namespace Won
 
       /* Written By Jordan Leibman
        * 11/6/17
-       * Save_Executed opens a dialog box to save the document. The current document is written to a rich text file
+       * Save_Executed opens a dialog box to save the document. The current document is written to a rich text file(*.rtf)
        * TODO: Integration testing
        */
       private void Save_Executed(object sender, ExecutedRoutedEventArgs e){
@@ -87,6 +87,19 @@ namespace Won
             FileStream filestream = new FileStream(dlg.FileName, FileMode.Create);
             TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
             range.Save(filestream, DataFormats.Rtf);
+         }
+      }
+
+      /* Written By Jordan Leibman
+       * 11/25/17
+       * Print_Executed opens a dialog box to print the document
+       * TODO: debugging on output document, print causes program to halt
+       */
+      private void Print_Executed(object sender, ExecutedRoutedEventArgs e){
+         PrintDialog dlg = new PrintDialog();
+         if(dlg.ShowDialog() == true)
+         {
+            dlg.PrintDocument((((IDocumentPaginatorSource)rtbEditor.Document).DocumentPaginator), "WonPrint");
          }
       }
 
