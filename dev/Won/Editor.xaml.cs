@@ -103,6 +103,31 @@ namespace Won
          }
       }
 
+      private void Cut_Executed(object sender, ExecutedRoutedEventArgs e) {
+         if (rtbEditor.Selection.Text != "" )
+            rtbEditor.Cut();
+      }
+
+      private void Copy_Executed(object sender, ExecutedRoutedEventArgs e) {
+         if (rtbEditor.Selection.Text != "")
+            rtbEditor.Copy();
+      }
+      private void Paste_Executed(object sender, ExecutedRoutedEventArgs e) {
+         if (Clipboard.GetDataObject().GetDataPresent(DataFormats.Text) == true)
+            rtbEditor.Paste();
+      }
+      private void Undo_Executed(object sender, ExecutedRoutedEventArgs e) {
+         if(rtbEditor.CanUndo == true){
+            rtbEditor.Undo();
+         }
+      }
+      private void Redo_Executed(object sender, ExecutedRoutedEventArgs e) {
+         if(rtbEditor.CanRedo == true)
+         {
+            rtbEditor.Redo();
+         }
+      }
+
       /* Written By Destoni Baldwin
        * 11/3/17
        * Editor_SelectionChanged is to update the editor whenever the cursor moves or when 

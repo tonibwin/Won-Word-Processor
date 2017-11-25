@@ -5,13 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Won"
         mc:Ignorable="d"
-        Title="Won Word Processor" Height="550" Width="9.5in">
+        Title="Won Word Processor" Height="6in" Width="9.5in">
     <!--Button images used from Microsoft Visual Studio 2013 Image Library (C) Microsoft, images used in this software are for education purposes only-->
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed"/>
         <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed"/>
         <CommandBinding Command="ApplicationCommands.Print" Executed="Print_Executed"/>
-        <!--<CommandBinding Command="ApplicationCommands.Find" Executed="Find_Executed"/>-->
+        <!--
+        <CommandBinding Command="ApplicationCommands.Find" Executed="Find_Executed"/>
+        -->
+        <CommandBinding Command="ApplicationCommands.Cut" Executed="Cut_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Copy" Executed="Copy_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Paste" Executed="Paste_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Undo" Executed="Undo_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Redo" Executed="Redo_Executed"/>
     </Window.CommandBindings>
     <DockPanel>
         <ToolBar DockPanel.Dock="Top">
@@ -29,6 +36,7 @@
             <Button Command="ApplicationCommands.Find" ToolTip="Find">
                 <Image Source="/Won;component/Images/Find.png" Width="16" Height="16"/>
             </Button>
+            -->
             <Button Command="ApplicationCommands.Cut" ToolTip="Cut">
                 <Image Source="/Won;component/Images/Cut.png" Width="16" Height="16"/>
             </Button>
@@ -45,7 +53,6 @@
                 <Image Source="/Won;component/Images/Redo.png" Width="16" Height="16"/>
             </Button>
             <Separator/>
-                -->
             <ToggleButton Command="EditingCommands.ToggleBold" Name="btnBold" ToolTip="Bold">
                 <Image Source="/Won;component/Images/Bold.png" Width="16" Height="16"/>
             </ToggleButton>
