@@ -1,4 +1,10 @@
-﻿<Window x:Class="Won.Editor"
+﻿<!--
+    Written By Jordan Leibman
+    11/25/17
+    XAML UI Controls
+    TODO: debug resizing behavior on rich text box
+    -->
+<Window x:Class="Won.Editor"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"

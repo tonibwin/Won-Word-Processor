@@ -103,24 +103,54 @@ namespace Won
          }
       }
 
+      /* Written by Jordan Leibman
+       * 11/25/17
+       * Cut_Executed allows the use of the cut button to cut text
+       * Cut button will only function if the selected text is not empty
+       * TODO: integration testing
+       */
       private void Cut_Executed(object sender, ExecutedRoutedEventArgs e) {
          if (rtbEditor.Selection.Text != "" )
             rtbEditor.Cut();
       }
 
+      /* Written by Jordan Leibman
+       * 11/25/17
+       * Copy_Executed allows the use of the copy button to copy text
+       * Copy button will only function if the selected text is not empty
+       * TODO: integration testing
+       */
       private void Copy_Executed(object sender, ExecutedRoutedEventArgs e) {
          if (rtbEditor.Selection.Text != "")
             rtbEditor.Copy();
       }
+
+      /* Written by Jordan Leibman
+       * 11/25/17
+       * Paste_Executed allows the use of the paste button to paste text
+       * TODO: integration testing
+       */
       private void Paste_Executed(object sender, ExecutedRoutedEventArgs e) {
          if (Clipboard.GetDataObject().GetDataPresent(DataFormats.Text) == true)
             rtbEditor.Paste();
       }
+
+      /* Written by Jordan Leibman
+       * 11/25/17
+       * Undo_Executed allows the use of the undo button to undo the previously entered text
+       * TODO: integration testing
+       */
       private void Undo_Executed(object sender, ExecutedRoutedEventArgs e) {
          if(rtbEditor.CanUndo == true){
             rtbEditor.Undo();
          }
       }
+
+      /* Written by Jordan Leibman
+       * 11/25/17
+       * Undo_Executed allows the use of the redo button to redo entried previously removed by undo
+       * TODO: integration testing
+       */
       private void Redo_Executed(object sender, ExecutedRoutedEventArgs e) {
          if(rtbEditor.CanRedo == true)
          {
