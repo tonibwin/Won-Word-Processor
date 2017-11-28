@@ -4,3 +4,8 @@ C:\Users\Jordan\Desktop\CS371\GroupWon\dev\bin\Debug\ConsoleApplication.exe
 C:\Users\Jordan\Desktop\CS371\GroupWon\dev\bin\Debug\ConsoleApplication.pdb
 C:\Users\Jordan\Desktop\CS371\GroupWon\dev\obj\x86\Debug\ConsoleApplication.exe
 C:\Users\Jordan\Desktop\CS371\GroupWon\dev\obj\x86\Debug\ConsoleApplication.pdb
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\Documentation\Prototype\MVVMProto\obj\x86\Debug\ConsoleApplication.exe
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\Documentation\Prototype\MVVMProto\obj\x86\Debug\ConsoleApplication.pdb
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\Documentation\Prototype\MVVMProto\obj\x86\Debug\WonDemo1.csprojResolveAssemblyReference.cache
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\Documentation\Prototype\MVVMProto\bin\Debug\ConsoleApplication.exe
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\Documentation\Prototype\MVVMProto\bin\Debug\ConsoleApplication.pdb
