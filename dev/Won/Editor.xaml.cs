@@ -38,13 +38,19 @@ namespace Won
     */
    public partial class Editor : Window{
 
+      //Below declaration written by Zachary Lowery
+      //This is just an instance of arrays that allow certain string functions to search for the alphabet and do operations accordingly.
+      char[] alphaAnyCase = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+      char[] numberArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
-      /* Written By Jordan Leibman
-       * 11/6/17
-       * The editor constructor sets up the editor and specifies defaults for the font size and font family.
-       * TODO: have default settings actually enforced in the document. Currently the default settings control the UI element, but do not actually modify the document
-       */
-      public Editor(){
+
+
+        /* Written By Jordan Leibman
+         * 11/6/17
+         * The editor constructor sets up the editor and specifies defaults for the font size and font family.
+         * TODO: have default settings actually enforced in the document. Currently the default settings control the UI element, but do not actually modify the document
+         */
+        public Editor(){
          //initializes the XAML code, do not delete this
          InitializeComponent();
          //Uses SystemFontFamilies class to retrieve different styles
@@ -198,7 +204,38 @@ namespace Won
        */
       private void selectFontSize(object sender, TextChangedEventArgs e)
       {
-         rtbEditor.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.Text);
+           
+            int index = 0;
+            String newString = "";
+
+            //Error-Exception handling cases written by Zachary Lowery
+            
+            //This loop checks for the presence of numerical characters in the font-size selection box. If there are any, it includes them.
+            //The string is changed to exclude all non-numerical characters that were originally in the string.
+            while ((index = cmbFontSize.Text.IndexOfAny(numberArray, index)) != -1)
+            {
+               
+                newString += cmbFontSize.Text[index];
+
+                if (newString[0] == '0')
+                {
+                    newString = newString.Remove(0, 1);
+                }
+                index++;
+            }
+            cmbFontSize.Text = newString;
+
+            //The numerical value selected is too high, truncate the rest of the string.
+            if(cmbFontSize.Text.Length > 3)
+            {
+                cmbFontSize.Text = cmbFontSize.Text.Remove(3, cmbFontSize.Text.Length - 3);
+            }
+
+
+            //Makes sure there is a string left. If there isn't, returns without making changes.
+            if (String.Compare(cmbFontSize.Text, "") == 0) return;
+
+            rtbEditor.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.Text);
       }
 
 
