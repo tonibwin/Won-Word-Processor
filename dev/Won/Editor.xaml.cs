@@ -56,11 +56,23 @@ namespace Won
          //Uses SystemFontFamilies class to retrieve different styles
          cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
          cmbFontFamily.SelectedItem = Fonts.SystemFontFamilies.FirstOrDefault(family => family.Source == "Times New Roman");
+         
          //List of all possible sizes for font
          List<double> Size = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
+
          cmbFontSize.ItemsSource = Size;
          cmbFontSize.SelectedItem = Size.FirstOrDefault(size => size == 12);
-      }
+
+         //List of all possible colors for text and highlighting
+         List<String> textColors = new List<String>() { "Black", "Red", "Yellow", "Blue" };
+         List<String> highlightColors = new List<String>() { "White","Black", "Red", "Yellow", "Blue" };
+
+         cmbTextColor.ItemsSource = textColors;
+         cmbTextColor.SelectedItem = textColors.FirstOrDefault(color => color == "Black");
+
+         cmbHighlight.ItemsSource = highlightColors;
+         cmbHighlight.SelectedItem = highlightColors.FirstOrDefault(color => color == "White");
+        }
 
 
       /* Written By Jordan Leibman
@@ -324,5 +336,38 @@ namespace Won
          temp = rtbEditor.Selection.GetPropertyValue(Inline.FontSizeProperty);
          cmbFontSize.Text = temp.ToString();
       }
-   }
+
+        /* Written By Troy McMillan
+        * The purpose of this function is to change the color of the selected text to a color the user wishes
+        * Pre-Conditions: Parameters are eventhandlers in which the user selects from a list of text colors
+        * Post-Conditions: The selected text in the RTF is changed to the appropriate color
+        */
+        private void changeTextColor (object sender, SelectionChangedEventArgs e)
+        {
+            //a new brush is created based off the textcolor selection in the UI. it's converted to a string, then
+            //typecasted into a color for a new brush
+            Brush painter = new SolidColorBrush((Color)ColorConverter.ConvertFromString(cmbTextColor.SelectedItem.ToString()));
+
+            //the new brush is then applied to the forground property of the selected text
+            rtbEditor.Selection.ApplyPropertyValue(ForegroundProperty, painter);
+         
+        }
+
+        /* Written By Troy McMillan
+        * The purpose of this function is to highlight text in a user selected color
+        * Pre-Conditions: Parameters are eventhandlers in which the user selects from a list of  
+        * highlight colors
+        * Post-Conditions: The selected text in the RTF is highlighted in the appropriate color
+        */
+        private void highlightText(object sender, SelectionChangedEventArgs e)
+        {
+            //a new brush is created based off the highlightColor selection in the UI. it's converted to a string, then
+            //typecasted into a color for a new brush
+            Brush painter = new SolidColorBrush((Color)ColorConverter.ConvertFromString(cmbHighlight.SelectedItem.ToString()));
+
+            //the new brush is then applied to the background property of the selected text
+            rtbEditor.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, painter);
+
+        }
+    }
 }

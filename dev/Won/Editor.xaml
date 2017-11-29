@@ -72,8 +72,8 @@
             <ComboBox Name="cmbFontFamily" Width="150" SelectionChanged="selectFontFamily" ToolTip="Font Family"/>
             <ComboBox Name="cmbFontSize" Width="50" IsEditable="True" TextBoxBase.TextChanged="selectFontSize" ToolTip="Font Size"/>
             <Separator/>
-            <ComboBox Name="cmbHighlight" Width="50" ToolTip="Highlight Color"/>
-            <ComboBox Name="cmbTextColor" Width="50" ToolTip="Text Color"/>
+            <ComboBox Name="cmbHighlight" Width="50"  SelectionChanged="highlightText" ToolTip="Highlight Color"/>
+            <ComboBox Name="cmbTextColor" Width="50" SelectionChanged="changeTextColor" ToolTip="Text Color"/>
         </ToolBar>
         <ScrollViewer Background="Gray" HorizontalScrollBarVisibility="Auto">
             <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged" AcceptsTab="True" Width="8.5in" BorderBrush="White" Padding=".5in"/>
