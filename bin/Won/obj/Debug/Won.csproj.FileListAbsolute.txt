@@ -28,19 +28,32 @@ C:\Users\Jordan\Desktop\CS371\GroupWon\bin\Won\obj\Debug\Won.csproj.GenerateReso
 C:\Users\Jordan\Desktop\CS371\GroupWon\bin\Won\obj\Debug\Won.csproj.CoreCompileInputs.cache
 C:\Users\Jordan\Desktop\CS371\GroupWon\bin\Won\obj\Debug\Won.exe
 C:\Users\Jordan\Desktop\CS371\GroupWon\bin\Won\obj\Debug\Won.pdb
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\bin\Debug\Won.exe.config
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\obj\Debug\Won.exe
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\obj\Debug\Won.pdb
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\bin\Debug\Won.exe
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\bin\Debug\Won.pdb
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\obj\Debug\Won.csprojResolveAssemblyReference.cache
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\obj\Debug\Editor.g.cs
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\obj\Debug\App.g.cs
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\obj\Debug\Won_MarkupCompile.cache
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\obj\Debug\Won_MarkupCompile.lref
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\obj\Debug\Editor.baml
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\obj\Debug\Won.g.resources
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\obj\Debug\Won.Properties.Resources.resources
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\obj\Debug\Won.csproj.GenerateResource.Cache
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\bin\Debug\Won.exe.CodeAnalysisLog.xml
-D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\bin\Won\bin\Debug\Won.exe.lastcodeanalysissucceeded
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\bin\Debug\Won.exe.config
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\bin\Debug\Won.exe
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\bin\Debug\Won.pdb
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\obj\Debug\Won.csprojResolveAssemblyReference.cache
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\obj\Debug\Editor.g.cs
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\obj\Debug\App.g.cs
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\obj\Debug\Won_MarkupCompile.cache
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\obj\Debug\Won_MarkupCompile.lref
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\obj\Debug\Editor.baml
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\obj\Debug\Won.g.resources
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\obj\Debug\Won.Properties.Resources.resources
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\obj\Debug\Won.csproj.GenerateResource.Cache
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\obj\Debug\Won.csproj.CoreCompileInputs.cache
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\obj\Debug\Won.exe
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\obj\Debug\Won.pdb
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\bin\Debug\Won.exe.config
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\bin\Debug\Won.exe
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\bin\Debug\Won.pdb
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Won.csprojResolveAssemblyReference.cache
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Editor.g.cs
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\App.g.cs
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Won_MarkupCompile.cache
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Won_MarkupCompile.lref
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Editor.baml
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Won.g.resources
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Won.Properties.Resources.resources
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Won.csproj.GenerateResource.Cache
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Won.exe
+D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Won.pdb

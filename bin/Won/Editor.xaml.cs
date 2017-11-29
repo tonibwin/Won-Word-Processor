@@ -1,30 +1,25 @@
 ﻿/* Editor.cs
- * Pushed: 10/31/17
+ * V1.7 11/28/2017 Demo3
+ * Pushed: 11/28/17
  * Description: Controls the Editor Button Functions for Won
- * TODO: Needs implementation for Save/Load, Text Styles(Bold, Italics, Underline), and Fonts(Styles and Size)
+ * TODO: Debugging and testing on Print
  * Implications: This controls the GUI button functionality and allows other features normally disabled from our GUI's controls to function
  * References: Uses reference from Visual Studio 2006 WPF Tutorial available at http://www.wpf-tutorial.com/rich-text-controls/how-to-creating-a-rich-text-editor/
  * 
- * TODO: modules seem to integrate together for the most part
+ * TODO:
  * Known Issues: Fonts at the start of the document don't retain their state for font size and font style
- *               Deleting the font size crashes the program
- *               Putting a non-numeric value in the font size will crash the program
+ *                   Temporary Fix: set the default text to the rtbEditor TextBox's default text style
+ *               Print_Executed causes the program to halt
  */
 using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 
 namespace Won
@@ -33,16 +28,33 @@ namespace Won
    /* Editor
     * Controls the state of the Won editor
     * 
-    * Last Updated v1.6 11/6/17  Demo2
+    * Last Updated v1.7 11/28/17  Demo3
     * Core Features:
-    * Save/Load allow the saving and loading of Rtf(Rich Text Format) files(Note, occasionally crashes if there is an active selection when saving loading)
-    * Bold, Italics, and Underline connected to togglebuttons: Their state should be controled and maintained while the toggle is active
-    * Font Size and Font Family combo boxes allow a selection of several font families and sizes. Font size is also editable in the editor and can be customized
+    * Stable:
+    * Saving and Loading of RTF documents
+    * Cut, Copy, and Paste on Selected Text
+    * Undo, and Redo to undo and redo entered text
+    * Font Size, Font Family Selection and Status
+    * Bold, Italics, and Underline Selection and Status
+    * Formatted text entry
+    * Unstable:
+    * Printing of Rich Text Box contents within the Won Editor
+    *    Printing currently causes the program to halt and has inconsistent formatting with the document in the Editor
     * 
-    * Planned Functional Features: Printing, Highlighting, Export to PDF
-    * Planned Quality Features: Scrolling, Document maintains text when window resizes
+    * Unimplemented:
+    * Highlighting
+    * Text-Color
+    * 
+    * Planned Functional Features: Highlighting, Export to PDF
+    * Planned Quality Features:
     */
-   public partial class Editor : Window{
+   public partial class Editor : Window
+   {
+
+      //Below declaration written by Zachary Lowery
+      //This is just an instance of arrays that allow certain string functions to search for the alphabet and do operations accordingly.
+      char[] alphaAnyCase = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+      char[] numberArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
 
       /* Written By Jordan Leibman
@@ -50,12 +62,13 @@ namespace Won
        * The editor constructor sets up the editor and specifies defaults for the font size and font family.
        * TODO: have default settings actually enforced in the document. Currently the default settings control the UI element, but do not actually modify the document
        */
-      public Editor(){
+      public Editor()
+      {
          //initializes the XAML code, do not delete this
          InitializeComponent();
          //Uses SystemFontFamilies class to retrieve different styles
          cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
-         cmbFontFamily.SelectedItem = Fonts.SystemFontFamilies.FirstOrDefault(family => family.Source == "Times New Roman");
+         cmbFontFamily.SelectedItem = Fonts.SystemFontFamilies.FirstOrDefault(family => family.Source == "Segoe UI");
          //List of all possible sizes for font
          List<double> Size = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
          cmbFontSize.ItemsSource = Size;
@@ -70,10 +83,12 @@ namespace Won
        * TODO: Integration testing: Currently the loaded file causes an exception in some cases
        * seems to occur when text is selected right after loading
        */
-      private void Open_Executed(object sender, ExecutedRoutedEventArgs e){
+      private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
+      {
          OpenFileDialog dlg = new OpenFileDialog();
          dlg.Filter = "Rich Text Format (*.rtf)|*.rtf|All files (*.*)|*.*";
-         if (dlg.ShowDialog()==true){
+         if (dlg.ShowDialog() == true)
+         {
             FileStream filestream = new FileStream(dlg.FileName, FileMode.Open);
             TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
             range.Load(filestream, DataFormats.Rtf);
@@ -82,10 +97,11 @@ namespace Won
 
       /* Written By Jordan Leibman
        * 11/6/17
-       * Save_Executed opens a dialog box to save the document. The current document is written to a rich text file
+       * Save_Executed opens a dialog box to save the document. The current document is written to a rich text file(*.rtf)
        * TODO: Integration testing
        */
-      private void Save_Executed(object sender, ExecutedRoutedEventArgs e){
+      private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
+      {
          SaveFileDialog dlg = new SaveFileDialog();
          dlg.Filter = "Rich Text Format (*.rtf)|*.rtf|All files (*.*)|*.*";
          if (dlg.ShowDialog() == true)
@@ -93,6 +109,81 @@ namespace Won
             FileStream filestream = new FileStream(dlg.FileName, FileMode.Create);
             TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
             range.Save(filestream, DataFormats.Rtf);
+         }
+      }
+
+      /* Written By Jordan Leibman
+       * 11/25/17
+       * Print_Executed opens a dialog box to print the document
+       * TODO: debugging on output document, print causes program to halt
+       */
+      private void Print_Executed(object sender, ExecutedRoutedEventArgs e)
+      {
+         PrintDialog dlg = new PrintDialog();
+         if (dlg.ShowDialog() == true)
+         {
+            dlg.PrintDocument((((IDocumentPaginatorSource)rtbEditor.Document).DocumentPaginator), "WonPrint");
+         }
+      }
+
+      /* Written by Jordan Leibman
+       * 11/25/17
+       * Cut_Executed allows the use of the cut button to cut text
+       * Cut button will only function if the selected text is not empty
+       * TODO: integration testing
+       */
+      private void Cut_Executed(object sender, ExecutedRoutedEventArgs e)
+      {
+         if (rtbEditor.Selection.Text != "")
+            rtbEditor.Cut();
+      }
+
+      /* Written by Jordan Leibman
+       * 11/25/17
+       * Copy_Executed allows the use of the copy button to copy text
+       * Copy button will only function if the selected text is not empty
+       * TODO: integration testing
+       */
+      private void Copy_Executed(object sender, ExecutedRoutedEventArgs e)
+      {
+         if (rtbEditor.Selection.Text != "")
+            rtbEditor.Copy();
+      }
+
+      /* Written by Jordan Leibman
+       * 11/25/17
+       * Paste_Executed allows the use of the paste button to paste text
+       * TODO: integration testing
+       */
+      private void Paste_Executed(object sender, ExecutedRoutedEventArgs e)
+      {
+         if (Clipboard.GetDataObject().GetDataPresent(DataFormats.Text) == true)
+            rtbEditor.Paste();
+      }
+
+      /* Written by Jordan Leibman
+       * 11/25/17
+       * Undo_Executed allows the use of the undo button to undo the previously entered text
+       * TODO: integration testing
+       */
+      private void Undo_Executed(object sender, ExecutedRoutedEventArgs e)
+      {
+         if (rtbEditor.CanUndo == true)
+         {
+            rtbEditor.Undo();
+         }
+      }
+
+      /* Written by Jordan Leibman
+       * 11/25/17
+       * Undo_Executed allows the use of the redo button to redo entried previously removed by undo
+       * TODO: integration testing
+       */
+      private void Redo_Executed(object sender, ExecutedRoutedEventArgs e)
+      {
+         if (rtbEditor.CanRedo == true)
+         {
+            rtbEditor.Redo();
          }
       }
 
@@ -129,6 +220,7 @@ namespace Won
       }
 
       /* Written By Destoni Baldwin
+       * Updated: 11/28/17 by Zachary Lowery-Exception Handling
        * Purpose of function is to be able to select a font size from the toolbar.
        * Pre-Conditions: Parameters are eventhandlers in which takes in a selected change 
        * of Font size.
@@ -136,6 +228,37 @@ namespace Won
        */
       private void selectFontSize(object sender, TextChangedEventArgs e)
       {
+
+         int index = 0;
+         String newString = "";
+
+         //Error-Exception handling cases written by Zachary Lowery
+
+         //This loop checks for the presence of numerical characters in the font-size selection box. If there are any, it includes them.
+         //The string is changed to exclude all non-numerical characters that were originally in the string.
+         while ((index = cmbFontSize.Text.IndexOfAny(numberArray, index)) != -1)
+         {
+
+            newString += cmbFontSize.Text[index];
+
+            if (newString[0] == '0')
+            {
+               newString = newString.Remove(0, 1);
+            }
+            index++;
+         }
+         cmbFontSize.Text = newString;
+
+         //The numerical value selected is too high, truncate the rest of the string.
+         if (cmbFontSize.Text.Length > 3)
+         {
+            cmbFontSize.Text = cmbFontSize.Text.Remove(3, cmbFontSize.Text.Length - 3);
+         }
+
+
+         //Makes sure there is a string left. If there isn't, returns without making changes.
+         if (String.Compare(cmbFontSize.Text, "") == 0) return;
+
          rtbEditor.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.Text);
       }
 

@@ -93,11 +93,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Bold_11689.png" />
-    <Resource Include="Images\Italic_11693.png" />
-    <Resource Include="Images\Open_6529.png" />
-    <Resource Include="Images\Save_6530.png" />
-    <Resource Include="Images\Underline_11700.png" />
+    <Resource Include="Images\Bold.png" />
+    <Resource Include="Images\Copy.png" />
+    <Resource Include="Images\Cut.png" />
+    <Resource Include="Images\Find.png" />
+    <Resource Include="Images\Italic.png" />
+    <Resource Include="Images\Open.png" />
+    <Resource Include="Images\Paste.png" />
+    <Resource Include="Images\Print.png" />
+    <Resource Include="Images\Redo.png" />
+    <Resource Include="Images\Save.png" />
+    <Resource Include="Images\Underline.png" />
+    <Resource Include="Images\Undo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
