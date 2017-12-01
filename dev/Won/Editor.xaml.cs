@@ -20,6 +20,9 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Microsoft.Win32;
 
 namespace Won
@@ -68,12 +71,9 @@ namespace Won
          InitializeComponent();
          //Uses SystemFontFamilies class to retrieve different styles
          cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
-<<<<<<< HEAD
          cmbFontFamily.SelectedItem = Fonts.SystemFontFamilies.FirstOrDefault(family => family.Source == "Times New Roman");
          
-=======
          cmbFontFamily.SelectedItem = Fonts.SystemFontFamilies.FirstOrDefault(family => family.Source == "Segoe UI");
->>>>>>> 457a78ef3a1d76898425b4dee43ef8187d0b88d9
          //List of all possible sizes for font
          List<double> Size = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
 
@@ -396,6 +396,40 @@ namespace Won
             //the new brush is then applied to the background property of the selected text
             rtbEditor.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, painter);
 
+        }
+
+        /* Written By Destoni Baldwin
+         * 11/3/17
+         * Purpose of function exportPDF is to save a file as a pdf.
+         * Pre-Conditions: Function gets called when an event is triggered. 
+         * Post-Conditions: Saves text in a pdf file. 
+         */
+        private void exportPDF(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //open dialog box and set the the file type to pdf
+                SaveFileDialog exportPDFFile = new SaveFileDialog();
+                exportPDFFile.Filter = "PDF Files|*.pdf";
+                if (exportPDFFile.ShowDialog() == true)
+                {
+                    //Create pdf document and add text and formatting.
+                    using (FileStream stream = new FileStream(exportPDFFile.FileName, FileMode.Create))
+                    {
+                        Document document = new Document(PageSize.A1, 10f, 10f, 10f, 0f);
+                        PdfWriter.GetInstance(document, stream);
+                        document.Open();
+                        TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+                        document.Add(new iTextSharp.text.Paragraph(range.Text));
+                        document.Close();
+                        stream.Close();
+                    }
+                }
+            }
+            catch (DocumentException de)
+            {
+                Console.Error.WriteLine(de.Message);
+            }
         }
     }
 }

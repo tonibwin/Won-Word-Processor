@@ -17,6 +17,7 @@
         <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed"/>
         <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed"/>
         <CommandBinding Command="ApplicationCommands.Print" Executed="Print_Executed"/>
+        <CommandBinding Command="ApplicationCommands.SaveAs" Executed="exportPDF"/>
         <!--
         <CommandBinding Command="ApplicationCommands.Find" Executed="Find_Executed"/>
         -->
@@ -34,6 +35,9 @@
             <Button Command="ApplicationCommands.Save" ToolTip="Save">
                 <Image Source="/Won;component/Images/Save.png" Width="16" Height="16"/>
             </Button>
+            <Button Command="ApplicationCommands.SaveAs" ToolTip="Save As PDF">
+                <Image Source="/Won;component/Images/Save.png" Width="16" Height="16"/>
+            </Button>            
             <Button Command="ApplicationCommands.Print" ToolTip="Print">
                 <Image Source="/Won;component/Images/Print.png" Width="16" Height="16"/>
             </Button>
