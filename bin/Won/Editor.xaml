@@ -12,14 +12,13 @@
         xmlns:local="clr-namespace:Won"
         mc:Ignorable="d"
         Title="Won Word Processor" Height="6in" Width="9.5in">
-    <!--Button images used from Microsoft Visual Studio 2013 Image Library (C) Microsoft, images used in this software are for education purposes only-->
+    <!--Button images used from Microsoft Visual Studio 2013 Image Library (C) Microsoft and Adobe Icons (C) Adobe, images used in this software are for education purposes only-->
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed"/>
         <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed"/>
-        <CommandBinding Command="ApplicationCommands.Print" Executed="Print_Executed"/>
-        <!--
-        <CommandBinding Command="ApplicationCommands.Find" Executed="Find_Executed"/>
-        -->
+        <CommandBinding Command="ApplicationCommands.Print" Executed="PrintRef_Executed"/>
+        <CommandBinding Command="ApplicationCommands.SaveAs" Executed="exportPDF"/>
+        <!--<CommandBinding Command="ApplicationCommands.Find" Executed="Find_Executed"/>-->
         <CommandBinding Command="ApplicationCommands.Cut" Executed="Cut_Executed"/>
         <CommandBinding Command="ApplicationCommands.Copy" Executed="Copy_Executed"/>
         <CommandBinding Command="ApplicationCommands.Paste" Executed="Paste_Executed"/>
@@ -34,15 +33,16 @@
             <Button Command="ApplicationCommands.Save" ToolTip="Save">
                 <Image Source="/Won;component/Images/Save.png" Width="16" Height="16"/>
             </Button>
+            <Button Command="ApplicationCommands.SaveAs" ToolTip="Save As PDF">
+                <Image Source="/Won;component/Images/SavePDF.png" Width="16" Height="16"/>
+            </Button>            
             <Button Command="ApplicationCommands.Print" ToolTip="Print">
                 <Image Source="/Won;component/Images/Print.png" Width="16" Height="16"/>
             </Button>
             <Separator/>
-            <!--
             <Button Command="ApplicationCommands.Find" ToolTip="Find">
                 <Image Source="/Won;component/Images/Find.png" Width="16" Height="16"/>
             </Button>
-            -->
             <Button Command="ApplicationCommands.Cut" ToolTip="Cut">
                 <Image Source="/Won;component/Images/Cut.png" Width="16" Height="16"/>
             </Button>
@@ -72,8 +72,8 @@
             <ComboBox Name="cmbFontFamily" Width="150" SelectionChanged="selectFontFamily" ToolTip="Font Family"/>
             <ComboBox Name="cmbFontSize" Width="50" IsEditable="True" TextBoxBase.TextChanged="selectFontSize" ToolTip="Font Size"/>
             <Separator/>
-            <ComboBox Name="cmbHighlight" Width="50" ToolTip="Highlight Color"/>
-            <ComboBox Name="cmbTextColor" Width="50" ToolTip="Text Color"/>
+            <ComboBox Name="cmbHighlight" Width="50"  SelectionChanged="highlightText" ToolTip="Highlight Color"/>
+            <ComboBox Name="cmbTextColor" Width="50" SelectionChanged="changeTextColor" ToolTip="Text Color"/>
         </ToolBar>
         <ScrollViewer Background="Gray" HorizontalScrollBarVisibility="Auto">
             <RichTextBox Name="rtbEditor" SelectionChanged="rtbEditor_SelectionChanged" AcceptsTab="True" Width="8.5in" BorderBrush="White" Padding=".5in"/>

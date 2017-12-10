@@ -20,10 +20,12 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using iTextSharp;
+using System.Windows.Xps;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.Win32;
+using System.Printing;
+using Microsoft.VisualBasic;
 
 namespace Won
 {
@@ -142,6 +144,51 @@ namespace Won
          }
       }
 
+      /* Written By Jordan Leibman
+       * 12/5/17
+       * PrintRef_Executed is a refined Printing function that prevents the Editor from halting.
+       * It functions by using the XPS class features and copying the printed document into a new document that is then printed
+       * Reference for pseudocode was pulled from the MSDN forums.
+       * TODO: Full Testing and integration with other features.
+       */
+      private void PrintRef_Executed(object sender, ExecutedRoutedEventArgs e)
+      {
+         //makes a new text range copy
+         TextRange source = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+         MemoryStream stream = new MemoryStream();
+         source.Save(stream, DataFormats.Xaml);
+
+         //saves the copy into new FlowDocument
+         FlowDocument print = new FlowDocument();
+         TextRange copy = new TextRange(print.ContentStart, print.ContentEnd);
+         copy.Load(stream, DataFormats.Xaml);
+
+         //Makes a new PrintDocument based on the selected printing size
+         PrintDocumentImageableArea area = null;
+         XpsDocumentWriter writer = PrintQueue.CreateXpsDocumentWriter(ref area);
+         if(writer != null && area != null)
+         {
+            DocumentPaginator paginator = ((IDocumentPaginatorSource)print).DocumentPaginator;
+
+            paginator.PageSize = new Size(area.MediaSizeWidth, area.MediaSizeHeight);
+            Thickness padding = print.PagePadding;
+
+            //sets margins within the printed document
+            print.PagePadding = new Thickness(
+               Math.Max(area.OriginWidth, padding.Left),
+               Math.Max(area.OriginHeight, padding.Top),
+               Math.Max(area.MediaSizeWidth - (area.OriginWidth + area.ExtentWidth), padding.Right),
+               Math.Max(area.MediaSizeWidth - (area.OriginHeight + area.ExtentHeight), padding.Bottom)
+            );
+
+            //removes columns from the document
+            print.ColumnWidth = double.PositiveInfinity;
+
+            //XPS write
+            writer.Write(paginator);
+         }
+      }
+      
       /* Written by Jordan Leibman
        * 11/25/17
        * Cut_Executed allows the use of the cut button to cut text
@@ -202,6 +249,29 @@ namespace Won
             rtbEditor.Redo();
          }
       }
+
+      /* Written by Jordan Leibman and Michael Curtis
+       * 12/5/17
+       * Find_Executed is supposed to find and highlight all instances of the found string. Allows user input thorugh popup window.
+       * TODO: implementation - original find function used alternate library System.Windows.Forms which was causing a compatibilty error.
+       *                        Commented-out since unable to complete integration
+       */
+      /*
+      private void Find_Executed(object sender, ExecutedRoutedEventArgs e)
+      {
+         rtbEditor.CaretPosition = rtbEditor.Document.ContentStart;
+         string search = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd).Text;
+         int index = 0;
+         string findVal = Interaction.InputBox("Text to find:", "Find", "");
+         while(index != search.Length - 1)
+         {
+            index = search.IndexOf(findVal);
+            rtbEditor.CaretPosition = rtbEditor.Document.ContentStart.GetPositionAtOffset(index);
+
+         }
+         
+      }
+      */
 
       /* Written By Destoni Baldwin
        * 11/3/17

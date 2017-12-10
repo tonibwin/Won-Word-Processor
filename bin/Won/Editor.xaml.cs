@@ -20,7 +20,12 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Xps;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Microsoft.Win32;
+using System.Printing;
+using Microsoft.VisualBasic;
 
 namespace Won
 {
@@ -68,12 +73,25 @@ namespace Won
          InitializeComponent();
          //Uses SystemFontFamilies class to retrieve different styles
          cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
+         cmbFontFamily.SelectedItem = Fonts.SystemFontFamilies.FirstOrDefault(family => family.Source == "Times New Roman");
+         
          cmbFontFamily.SelectedItem = Fonts.SystemFontFamilies.FirstOrDefault(family => family.Source == "Segoe UI");
          //List of all possible sizes for font
          List<double> Size = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
+
          cmbFontSize.ItemsSource = Size;
          cmbFontSize.SelectedItem = Size.FirstOrDefault(size => size == 12);
-      }
+
+         //List of all possible colors for text and highlighting
+         List<String> textColors = new List<String>() { "Black", "Red", "Yellow", "Blue" };
+         List<String> highlightColors = new List<String>() { "White","Black", "Red", "Yellow", "Blue" };
+
+         cmbTextColor.ItemsSource = textColors;
+         cmbTextColor.SelectedItem = textColors.FirstOrDefault(color => color == "Black");
+
+         cmbHighlight.ItemsSource = highlightColors;
+         cmbHighlight.SelectedItem = highlightColors.FirstOrDefault(color => color == "White");
+        }
 
 
       /* Written By Jordan Leibman
@@ -126,6 +144,51 @@ namespace Won
          }
       }
 
+      /* Written By Jordan Leibman
+       * 12/5/17
+       * PrintRef_Executed is a refined Printing function that prevents the Editor from halting.
+       * It functions by using the XPS class features and copying the printed document into a new document that is then printed
+       * Reference for pseudocode was pulled from the MSDN forums.
+       * TODO: Full Testing and integration with other features.
+       */
+      private void PrintRef_Executed(object sender, ExecutedRoutedEventArgs e)
+      {
+         //makes a new text range copy
+         TextRange source = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+         MemoryStream stream = new MemoryStream();
+         source.Save(stream, DataFormats.Xaml);
+
+         //saves the copy into new FlowDocument
+         FlowDocument print = new FlowDocument();
+         TextRange copy = new TextRange(print.ContentStart, print.ContentEnd);
+         copy.Load(stream, DataFormats.Xaml);
+
+         //Makes a new PrintDocument based on the selected printing size
+         PrintDocumentImageableArea area = null;
+         XpsDocumentWriter writer = PrintQueue.CreateXpsDocumentWriter(ref area);
+         if(writer != null && area != null)
+         {
+            DocumentPaginator paginator = ((IDocumentPaginatorSource)print).DocumentPaginator;
+
+            paginator.PageSize = new Size(area.MediaSizeWidth, area.MediaSizeHeight);
+            Thickness padding = print.PagePadding;
+
+            //sets margins within the printed document
+            print.PagePadding = new Thickness(
+               Math.Max(area.OriginWidth, padding.Left),
+               Math.Max(area.OriginHeight, padding.Top),
+               Math.Max(area.MediaSizeWidth - (area.OriginWidth + area.ExtentWidth), padding.Right),
+               Math.Max(area.MediaSizeWidth - (area.OriginHeight + area.ExtentHeight), padding.Bottom)
+            );
+
+            //removes columns from the document
+            print.ColumnWidth = double.PositiveInfinity;
+
+            //XPS write
+            writer.Write(paginator);
+         }
+      }
+      
       /* Written by Jordan Leibman
        * 11/25/17
        * Cut_Executed allows the use of the cut button to cut text
@@ -186,6 +249,29 @@ namespace Won
             rtbEditor.Redo();
          }
       }
+
+      /* Written by Jordan Leibman and Michael Curtis
+       * 12/5/17
+       * Find_Executed is supposed to find and highlight all instances of the found string. Allows user input thorugh popup window.
+       * TODO: implementation - original find function used alternate library System.Windows.Forms which was causing a compatibilty error.
+       *                        Commented-out since unable to complete integration
+       */
+      /*
+      private void Find_Executed(object sender, ExecutedRoutedEventArgs e)
+      {
+         rtbEditor.CaretPosition = rtbEditor.Document.ContentStart;
+         string search = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd).Text;
+         int index = 0;
+         string findVal = Interaction.InputBox("Text to find:", "Find", "");
+         while(index != search.Length - 1)
+         {
+            index = search.IndexOf(findVal);
+            rtbEditor.CaretPosition = rtbEditor.Document.ContentStart.GetPositionAtOffset(index);
+
+         }
+         
+      }
+      */
 
       /* Written By Destoni Baldwin
        * 11/3/17
@@ -348,5 +434,72 @@ namespace Won
          temp = rtbEditor.Selection.GetPropertyValue(Inline.FontSizeProperty);
          cmbFontSize.Text = temp.ToString();
       }
-   }
+
+        /* Written By Troy McMillan
+        * The purpose of this function is to change the color of the selected text to a color the user wishes
+        * Pre-Conditions: Parameters are eventhandlers in which the user selects from a list of text colors
+        * Post-Conditions: The selected text in the RTF is changed to the appropriate color
+        */
+        private void changeTextColor (object sender, SelectionChangedEventArgs e)
+        {
+            //a new brush is created based off the textcolor selection in the UI. it's converted to a string, then
+            //typecasted into a color for a new brush
+            Brush painter = new SolidColorBrush((Color)ColorConverter.ConvertFromString(cmbTextColor.SelectedItem.ToString()));
+
+            //the new brush is then applied to the forground property of the selected text
+            rtbEditor.Selection.ApplyPropertyValue(ForegroundProperty, painter);
+         
+        }
+
+        /* Written By Troy McMillan
+        * The purpose of this function is to highlight text in a user selected color
+        * Pre-Conditions: Parameters are eventhandlers in which the user selects from a list of  
+        * highlight colors
+        * Post-Conditions: The selected text in the RTF is highlighted in the appropriate color
+        */
+        private void highlightText(object sender, SelectionChangedEventArgs e)
+        {
+            //a new brush is created based off the highlightColor selection in the UI. it's converted to a string, then
+            //typecasted into a color for a new brush
+            Brush painter = new SolidColorBrush((Color)ColorConverter.ConvertFromString(cmbHighlight.SelectedItem.ToString()));
+
+            //the new brush is then applied to the background property of the selected text
+            rtbEditor.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, painter);
+
+        }
+
+        /* Written By Destoni Baldwin
+         * 11/3/17
+         * Purpose of function exportPDF is to save a file as a pdf.
+         * Pre-Conditions: Function gets called when an event is triggered. 
+         * Post-Conditions: Saves text in a pdf file. 
+         */
+        private void exportPDF(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //open dialog box and set the the file type to pdf
+                SaveFileDialog exportPDFFile = new SaveFileDialog();
+                exportPDFFile.Filter = "PDF Files|*.pdf";
+                if (exportPDFFile.ShowDialog() == true)
+                {
+                    //Create pdf document and add text and formatting.
+                    using (FileStream stream = new FileStream(exportPDFFile.FileName, FileMode.Create))
+                    {
+                        Document document = new Document(PageSize.A1, 10f, 10f, 10f, 0f);
+                        PdfWriter.GetInstance(document, stream);
+                        document.Open();
+                        TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+                        document.Add(new iTextSharp.text.Paragraph(range.Text));
+                        document.Close();
+                        stream.Close();
+                    }
+                }
+            }
+            catch (DocumentException de)
+            {
+                Console.Error.WriteLine(de.Message);
+            }
+        }
+    }
 }

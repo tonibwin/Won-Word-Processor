@@ -12,15 +12,13 @@
         xmlns:local="clr-namespace:Won"
         mc:Ignorable="d"
         Title="Won Word Processor" Height="6in" Width="9.5in">
-    <!--Button images used from Microsoft Visual Studio 2013 Image Library (C) Microsoft, images used in this software are for education purposes only-->
+    <!--Button images used from Microsoft Visual Studio 2013 Image Library (C) Microsoft and Adobe Icons (C) Adobe, images used in this software are for education purposes only-->
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed"/>
         <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed"/>
-        <CommandBinding Command="ApplicationCommands.Print" Executed="Print_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Print" Executed="PrintRef_Executed"/>
         <CommandBinding Command="ApplicationCommands.SaveAs" Executed="exportPDF"/>
-        <!--
-        <CommandBinding Command="ApplicationCommands.Find" Executed="Find_Executed"/>
-        -->
+        <!--<CommandBinding Command="ApplicationCommands.Find" Executed="Find_Executed"/>-->
         <CommandBinding Command="ApplicationCommands.Cut" Executed="Cut_Executed"/>
         <CommandBinding Command="ApplicationCommands.Copy" Executed="Copy_Executed"/>
         <CommandBinding Command="ApplicationCommands.Paste" Executed="Paste_Executed"/>
@@ -36,17 +34,15 @@
                 <Image Source="/Won;component/Images/Save.png" Width="16" Height="16"/>
             </Button>
             <Button Command="ApplicationCommands.SaveAs" ToolTip="Save As PDF">
-                <Image Source="/Won;component/Images/Save.png" Width="16" Height="16"/>
+                <Image Source="/Won;component/Images/SavePDF.png" Width="16" Height="16"/>
             </Button>            
             <Button Command="ApplicationCommands.Print" ToolTip="Print">
                 <Image Source="/Won;component/Images/Print.png" Width="16" Height="16"/>
             </Button>
             <Separator/>
-            <!--
             <Button Command="ApplicationCommands.Find" ToolTip="Find">
                 <Image Source="/Won;component/Images/Find.png" Width="16" Height="16"/>
             </Button>
-            -->
             <Button Command="ApplicationCommands.Cut" ToolTip="Cut">
                 <Image Source="/Won;component/Images/Cut.png" Width="16" Height="16"/>
             </Button>

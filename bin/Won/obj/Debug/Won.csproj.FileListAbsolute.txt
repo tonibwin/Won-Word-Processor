@@ -57,3 +57,22 @@ D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\D
 D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Won.csproj.GenerateResource.Cache
 D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Won.exe
 D:\Users\Zach\Desktop\Course_Syllabus\Fall 2017\CS371_Cao\GroupWon\dev\Won\obj\Debug\Won.pdb
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\bin\Debug\Won.exe.config
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\bin\Debug\Won.exe
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\bin\Debug\Won.pdb
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\obj\Debug\Won.csprojResolveAssemblyReference.cache
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\obj\Debug\Editor.g.cs
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\obj\Debug\App.g.cs
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\obj\Debug\Won_MarkupCompile.cache
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\obj\Debug\Won_MarkupCompile.lref
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\obj\Debug\Editor.baml
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\obj\Debug\Won.g.resources
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\obj\Debug\Won.Properties.Resources.resources
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\obj\Debug\Won.csproj.GenerateResource.Cache
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\obj\Debug\Won.csproj.CoreCompileInputs.cache
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\obj\Debug\Won.exe
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\obj\Debug\Won.pdb
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\bin\Debug\itextsharp.dll
+C:\Users\tonib\OneDrive\Documents\CS371\GroupWon\dev\Won\bin\Debug\itextsharp.xml
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\bin\Debug\itextsharp.dll
+C:\Users\Jordan\Desktop\CS371\GroupWon\dev\Won\bin\Debug\itextsharp.xml
