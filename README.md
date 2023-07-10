@@ -1,4 +1,3 @@
-README ( Last Updated  12/5/17  v1.8  Demo4 )
 # Won Word Processor
 Won Word Processor is a text editor that allows basic text entry. Along with the ability to save and open RTF documents. It provides editing tools such as highlight, undo, redo, fonts, font colors, bold, italics, underline, cut, copy and paste. It allows printing and exporting to PDF. The development environment is Visual Studio and the programming language used was C#. 
 
