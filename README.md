@@ -1,10 +1,12 @@
 README ( Last Updated  12/5/17  v1.8  Demo4 )
+# Won Word Processor
+Won Word Processor is a text editor that allows basic text entry. Along with the ability to save and open RTF documents. It provides editing tools such as highlight, undo, redo, fonts, font colors, bold, italics, underline, cut, copy and paste. It allows printing and exporting to PDF. The development environment is Visual Studio and the programming language used was C#. 
+
 Current Deployment is currently only possible in a Windows environment as some of the programs features are used to call the OS to do the feature. Implementation and compatibility on a non windows environment was not pursued or tested
 Loading the visual studio solution Won.sln located in */GroupWon/bin/Won.sln will load the file in Visual Studio
 After loading press the start button at the top of the page (or press f5 by default visual studio settings) to start building. Once the solution is built Visual Studio should start the program automatically
 
-Won Word Processor
-Current Features
+## Current Features
 -Basic Text Entry: Allows for user controlled formatted text input and editting
 --Editing commands are supported through hotkeys and buttons
 --Allows for cut, copy, paste, undo, and redo
